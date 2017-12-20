@@ -13,11 +13,37 @@ namespace EsriMap
         public MainPage()
         {
             InitializeComponent();
-             MapView.Map = new Map
+            MyMapView.Map = new Map();
+        }
+
+        private void MapTypeTab_OnItemTapped(object sender, int e)
+        {
+            switch (e)
             {
-                BaseMapName = "Streets",
-                MapType = MapType.Streets
-            };
+                case 0:
+                    MyMapView.MapType = MapType.Imagery;
+                    break;
+
+                case 1:
+                    MyMapView.MapType = MapType.ImageryWithLabels;
+                    break;
+
+                case 2:
+                    MyMapView.MapType = MapType.Oceans;
+                    break;
+
+                case 3:
+                    MyMapView.MapType = MapType.Streets;
+                    break;
+
+                case 4:
+                    MyMapView.MapType = MapType.StreetsVector;
+                    break;
+
+                case 5:
+                    MyMapView.MapType = MapType.TerrainWithLabels;
+                    break;
+            }
         }
     }
 }

@@ -12,6 +12,9 @@ namespace EsriMap.Controls
         public static readonly BindableProperty MapProperty =
             BindableProperty.Create(nameof(Map), typeof(Map), typeof(MapView));
 
+        public static readonly BindableProperty MapTypeProperty =
+            BindableProperty.Create(nameof(MapType), typeof(MapType), typeof(MapView), MapType.Imagery);
+
         public static readonly BindableProperty WrapAroundModeProperty = BindableProperty.Create(nameof(WrapAroundMode),
             typeof(WrapAroundMode), typeof(MapView), WrapAroundMode.EnabledWhenSupported);
 
@@ -37,6 +40,12 @@ namespace EsriMap.Controls
         {
             get => (Map)GetValue(MapProperty);
             set => SetValue(MapProperty, value);
+        }
+
+        public MapType MapType
+        {
+            get => (MapType)GetValue(MapTypeProperty);
+            set => SetValue(MapTypeProperty, value);
         }
 
         public WrapAroundMode WrapAroundMode
