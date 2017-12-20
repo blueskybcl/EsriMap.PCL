@@ -38,6 +38,27 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\BackgroundGrid.cs" />
+    <Compile Include="Controls\GeoView.cs" />
+    <Compile Include="Controls\GeoViewInputEventArgs.cs" />
+    <Compile Include="Controls\GraphicsOverlay.cs" />
+    <Compile Include="Controls\GraphicsRenderingMode.cs" />
+    <Compile Include="Controls\GridLabelPosition.cs" />
+    <Compile Include="Controls\InteractionOptions.cs" />
+    <Compile Include="Controls\Layer.cs" />
+    <Compile Include="Controls\LocationDisplay.cs" />
+    <Compile Include="Controls\Map.cs" />
+    <Compile Include="Controls\MapGrid.cs" />
+    <Compile Include="Controls\MapPoint.cs" />
+    <Compile Include="Controls\MapType.cs" />
+    <Compile Include="Controls\MapView.cs" />
+    <Compile Include="Controls\MapViewInteractionOptions.cs" />
+    <Compile Include="Controls\SketchEditor.cs" />
+    <Compile Include="Controls\SketchStyle.cs" />
+    <Compile Include="Controls\ViewLabelProperties.cs" />
+    <Compile Include="Controls\Viewpoint.cs" />
+    <Compile Include="Controls\WheelZoomDirection.cs" />
+    <Compile Include="Controls\WrapAroundMode.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
