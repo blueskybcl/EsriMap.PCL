@@ -8,5 +8,9 @@ namespace EsriMap.Controls
 {
     public class Viewpoint
     {
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
+        public double Scale { get; set; }
+        public double Rotation { get; set; }
     }
 }

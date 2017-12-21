@@ -53,6 +53,7 @@
     <Compile Include="Controls\MapType.cs" />
     <Compile Include="Controls\MapView.cs" />
     <Compile Include="Controls\MapViewInteractionOptions.cs" />
+    <Compile Include="Controls\SceneView.cs" />
     <Compile Include="Controls\SketchEditor.cs" />
     <Compile Include="Controls\SketchStyle.cs" />
     <Compile Include="Controls\ViewLabelProperties.cs" />

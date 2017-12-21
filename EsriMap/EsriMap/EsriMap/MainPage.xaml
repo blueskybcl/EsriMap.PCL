@@ -11,7 +11,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <tab:SegmentedTabControl x:Name="MapTypeTab" Grid.Row="0" UnselectedSegmentBackgroundColor="White" TintColor="Black" 
-                                     SelectedSegmentTextColor="White" SelectedSegment="0" UnselectedSegmentTextColor="Black"
+                                     SelectedSegmentTextColor="White" SelectedSegment="-1" UnselectedSegmentTextColor="Black"
                                      HeightRequest="30" ItemTapped="MapTypeTab_OnItemTapped" >
                 <tab:SegmentedTabControl.Children>
                     <Label Text="Imagery" />

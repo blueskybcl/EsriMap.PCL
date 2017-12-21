@@ -38,17 +38,17 @@ namespace EsriMap.iOS.Renderer
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName == CusMapView.MapTypeProperty.PropertyName)
+            if (e.PropertyName == CusMapView.MapProperty.PropertyName)
             {
-                UpdateMapType();
+                UpdateMap();
             }
         }
 
-        private void UpdateMapType()
+        private void UpdateMap()
         {
             if (Element is CusMapView cusMapView)
             {
-                _originMapView.Map.Basemap = _adapter.GetBaseMap(cusMapView.MapType);
+                _originMapView.Map.Basemap = _adapter.GetBaseMap(cusMapView);
             }
         }
     }

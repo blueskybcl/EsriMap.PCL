@@ -23,6 +23,8 @@ namespace EsriMap.Controls
 
         public MapType MapType { get; set; }
 
+        public string WebMapUrl { get; set; }
+
         public ObservableCollection<Layer> OperationalLayers { get; set; }
 
         public double MinScale { get; set; }

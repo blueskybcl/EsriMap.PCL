@@ -25,13 +25,13 @@ namespace EsriMap.Android.Renderer.Adapters
 
         private void MappingMap(EsriMapView xfMapView, CusMapView cusMapView)
         {
-            Basemap baseMap = GetBaseMap(cusMapView.Map.MapType);
+            Basemap baseMap = GetBaseMap(cusMapView);
             xfMapView.Map = new Map(baseMap);
         }
 
-        public Basemap GetBaseMap(MapType mapType)
+        public Basemap GetBaseMap(CusMapView cusMapView)
         {
-            switch (mapType)
+            switch (cusMapView.Map.MapType)
             {
                 case MapType.Imagery:
                     return Basemap.CreateImagery();
@@ -87,8 +87,16 @@ namespace EsriMap.Android.Renderer.Adapters
                 case MapType.OpenStreetMap:
                     return Basemap.CreateOpenStreetMap();
 
+                case MapType.WebMap:
+                    if (!string.IsNullOrEmpty(cusMapView.Map.WebMapUrl))
+                    {
+                        return new Basemap(new Uri(cusMapView.Map.WebMapUrl));
+                    }
+
+                    throw new ArgumentOutOfRangeException(nameof(cusMapView.Map.WebMapUrl), cusMapView.Map.WebMapUrl, null);
+
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(mapType), mapType, null);
+                    throw new ArgumentOutOfRangeException(nameof(cusMapView.Map.MapType), cusMapView.Map.MapType, null);
             }
         }
     }

@@ -25,6 +25,7 @@ namespace EsriMap.Controls
         TerrainWithLabelsVector,
         Topographic,
         TopographicVector,
-        OpenStreetMap
+        OpenStreetMap,
+        WebMap
     }
 }
