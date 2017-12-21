@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace EsriMap.Controls
 {
-    public class GeoViewInputEventArgs : EventArgs
+    public class GeoViewInputEventArgs : System.EventArgs
     {
         public GeoViewInputEventArgs(MapPoint location, Point position)
         {
@@ -17,8 +17,8 @@ namespace EsriMap.Controls
 
         public bool Handled { get; set; }
 
-        public MapPoint Location { get; private set; }
+        public MapPoint Location { get; }
 
-        public Point Position { get; private set; }
+        public Point Position { get; }
     }
 }
