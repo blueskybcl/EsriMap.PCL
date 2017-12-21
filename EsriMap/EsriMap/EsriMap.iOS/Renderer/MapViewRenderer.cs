@@ -12,7 +12,8 @@ namespace EsriMap.iOS.Renderer
 {
     public class MapViewRenderer : ViewRenderer<CusMapView, MapView>
     {
-        private MapView OriginMapView;
+        private MapView _originMapView;
+        private readonly MapViewAdapter _adapter = MapViewAdapter.Instance;
 
         protected override void OnElementChanged(ElementChangedEventArgs<CusMapView> e)
         {
@@ -25,18 +26,30 @@ namespace EsriMap.iOS.Renderer
             CusMapView currentElement = e.NewElement;
             if (currentElement != null)
             {
-                OriginMapView = MapViewAdapter.Instance.Adapter(currentElement);
+                _originMapView = _adapter.Adapter(currentElement);
             }
 
             if (Control == null)
             {
-                SetNativeControl(OriginMapView);
+                SetNativeControl(_originMapView);
             }
         }
 
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName == CusMapView.MapTypeProperty.PropertyName)
+            {
+                UpdateMapType();
+            }
+        }
+
+        private void UpdateMapType()
+        {
+            if (Element is CusMapView cusMapView)
+            {
+                _originMapView.Map.Basemap = _adapter.GetBaseMap(cusMapView.MapType);
+            }
         }
     }
 }

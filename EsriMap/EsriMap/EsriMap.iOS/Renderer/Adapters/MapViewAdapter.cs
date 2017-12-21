@@ -29,7 +29,7 @@ namespace EsriMap.iOS.Renderer.Adapters
             xfMapView.Map = new Map(baseMap);
         }
 
-        private Basemap GetBaseMap(MapType mapType)
+        public Basemap GetBaseMap(MapType mapType)
         {
             switch (mapType)
             {
@@ -40,58 +40,56 @@ namespace EsriMap.iOS.Renderer.Adapters
                     return Basemap.CreateStreets();
 
                 case MapType.ImageryWithLabels:
-                    break;
+                    return Basemap.CreateImageryWithLabels();
 
                 case MapType.ImageryWithLabelsVector:
-                    break;
+                    return Basemap.CreateImageryWithLabelsVector();
 
                 case MapType.LightGrayCanvas:
-                    break;
+                    return Basemap.CreateLightGrayCanvas();
 
                 case MapType.LightGrayCanvasVector:
-                    break;
+                    return Basemap.CreateLightGrayCanvasVector();
 
                 case MapType.DarkGrayCanvasVector:
-                    break;
+                    return Basemap.CreateDarkGrayCanvasVector();
 
                 case MapType.NationalGeographic:
-                    break;
+                    return Basemap.CreateNationalGeographic();
 
                 case MapType.Oceans:
-                    break;
+                    return Basemap.CreateOceans();
 
                 case MapType.StreetsVector:
-                    break;
+                    return Basemap.CreateStreetsVector();
 
                 case MapType.StreetsWithReliefVector:
-                    break;
+                    return Basemap.CreateStreetsWithReliefVector();
 
                 case MapType.StreetsNightVector:
-                    break;
+                    return Basemap.CreateStreetsNightVector();
 
                 case MapType.NavigationVector:
-                    break;
+                    return Basemap.CreateNavigationVector();
 
                 case MapType.TerrainWithLabels:
-                    break;
+                    return Basemap.CreateTerrainWithLabels();
 
                 case MapType.TerrainWithLabelsVector:
-                    break;
+                    return Basemap.CreateTerrainWithLabelsVector();
 
                 case MapType.Topographic:
-                    break;
+                    return Basemap.CreateTopographic();
 
                 case MapType.TopographicVector:
-                    break;
+                    return Basemap.CreateTopographicVector();
 
                 case MapType.OpenStreetMap:
-                    break;
+                    return Basemap.CreateOpenStreetMap();
 
                 default:
                     throw new ArgumentOutOfRangeException(nameof(mapType), mapType, null);
             }
-
-            return null;
         }
     }
 }
