@@ -10,7 +10,8 @@ namespace EsriMap.Controls
 {
     public class LocationDisplay : INotifyPropertyChanged
     {
-        private double _navigationPointHeightFactor = 1;
+        private LocationDisplayAutoPanMode _autoPanMode = LocationDisplayAutoPanMode.Off;
+        private double _navigationPointHeightFactor = 0.5;
         private double _initialZoomScale = 1;
         private double _wanderExtentFactor = 1;
         private double _opacity = 0.8;
@@ -21,6 +22,16 @@ namespace EsriMap.Controls
         {
             PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
             propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public LocationDisplayAutoPanMode AutoPanMode
+        {
+            get => _autoPanMode;
+            set
+            {
+                _autoPanMode = value;
+                OnPropertyChanged();
+            }
         }
 
         public double NavigationPointHeightFactor

@@ -42,6 +42,8 @@
     <Compile Include="Controls\EventArgs\DrawStatusChangedEventArgs.cs" />
     <Compile Include="Controls\EventArgs\LayerViewStateChangedEventArgs.cs" />
     <Compile Include="Controls\EventArgs\ViewpointEventArgs.cs" />
+    <Compile Include="Controls\Geometrys\Envelope.cs" />
+    <Compile Include="Controls\Geometrys\Geometry.cs" />
     <Compile Include="Controls\GeoView.cs" />
     <Compile Include="Controls\GeoViewInputEventArgs.cs" />
     <Compile Include="Controls\GraphicsOverlay.cs" />
@@ -50,6 +52,7 @@
     <Compile Include="Controls\InteractionOptions.cs" />
     <Compile Include="Controls\Layer.cs" />
     <Compile Include="Controls\LocationDisplay.cs" />
+    <Compile Include="Controls\LocationDisplayAutoPanMode.cs" />
     <Compile Include="Controls\Map.cs" />
     <Compile Include="Controls\MapGrid.cs" />
     <Compile Include="Controls\MapPoint.cs" />
@@ -59,6 +62,7 @@
     <Compile Include="Controls\SceneView.cs" />
     <Compile Include="Controls\SketchEditor.cs" />
     <Compile Include="Controls\SketchStyle.cs" />
+    <Compile Include="Controls\SpatialReferenceType.cs" />
     <Compile Include="Controls\ViewLabelProperties.cs" />
     <Compile Include="Controls\Viewpoint.cs" />
     <Compile Include="Controls\WheelZoomDirection.cs" />
