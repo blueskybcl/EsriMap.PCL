@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EsriMap.Controls.EventArgs;
 using Xamarin.Forms;
 
 namespace EsriMap.Controls
@@ -33,16 +34,21 @@ namespace EsriMap.Controls
 
         public static readonly BindableProperty MapGridProperty =
             BindableProperty.Create(nameof(MapGrid), typeof(MapGrid), typeof(MapView));
-        
+
+        #region Event
+        public event EventHandler<TouchEventArgs> Touch;
+        public event EventHandler<DragEventArgs> Drag;
+        #endregion
+
         public Map Map
         {
-            get => (Map)GetValue(MapProperty);
+            get => (Map) GetValue(MapProperty);
             set => SetValue(MapProperty, value);
         }
 
         public WrapAroundMode WrapAroundMode
         {
-            get => (WrapAroundMode)GetValue(WrapAroundModeProperty);
+            get => (WrapAroundMode) GetValue(WrapAroundModeProperty);
             set => SetValue(WrapAroundModeProperty, value);
         }
 
@@ -52,30 +58,40 @@ namespace EsriMap.Controls
             set => SetValue(LabelingProperty, value);
         }
 
-        public LocationDisplay LocationDisplay => (LocationDisplay)GetValue(LocationDisplayProperty);
+        public LocationDisplay LocationDisplay => (LocationDisplay) GetValue(LocationDisplayProperty);
 
         public SketchEditor SketchEditor
         {
-            get => (SketchEditor)GetValue(SketchEditorProperty);
+            get => (SketchEditor) GetValue(SketchEditorProperty);
             set => SetValue(SketchEditorProperty, value);
         }
 
         public MapViewInteractionOptions InteractionOptions
         {
-            get => (MapViewInteractionOptions)GetValue(InteractionOptionsProperty);
+            get => (MapViewInteractionOptions) GetValue(InteractionOptionsProperty);
             set => SetValue(InteractionOptionsProperty, value);
         }
 
         public MapGrid Grid
         {
-            get => (MapGrid)GetValue(MapGridProperty);
+            get => (MapGrid) GetValue(MapGridProperty);
             set => SetValue(MapGridProperty, value);
+        }
+
+        public void OnTouch(object sender, TouchEventArgs e)
+        {
+            Touch?.Invoke(sender, e);
         }
 
         public BackgroundGrid BackgroundGrid
         {
-            get => (BackgroundGrid)GetValue(BackgroundGridProperty);
+            get => (BackgroundGrid) GetValue(BackgroundGridProperty);
             set => SetValue(BackgroundGridProperty, value);
+        }
+
+        public void OnDrag(object sender, DragEventArgs e)
+        {
+            Drag?.Invoke(sender, e);
         }
     }
 }

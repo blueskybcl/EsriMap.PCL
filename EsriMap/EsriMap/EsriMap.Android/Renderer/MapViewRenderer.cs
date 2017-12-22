@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using Esri.ArcGISRuntime.Geometry;
 using EsriMap.Android.Renderer;
 using EsriMap.Android.Renderer.Adapters;
 using Xamarin.Forms;
@@ -10,10 +9,9 @@ using CusGeoViewInputEventArgs = EsriMap.Controls.GeoViewInputEventArgs;
 using CusMapPoint = EsriMap.Controls.MapPoint;
 using Esri.ArcGISRuntime.UI;
 using Esri.ArcGISRuntime.Mapping;
-using EsriMap.Controls;
+using EsriMap.Droid.Renderer.Converters;
 using GeoViewInputEventArgs = Esri.ArcGISRuntime.UI.Controls.GeoViewInputEventArgs;
 using MapView = Esri.ArcGISRuntime.UI.Controls.MapView;
-using Viewpoint = Esri.ArcGISRuntime.Mapping.Viewpoint;
 
 [assembly: ExportRenderer(typeof(CusMapView), typeof(MapViewRenderer))]
 
@@ -36,6 +34,8 @@ namespace EsriMap.Android.Renderer
                 Control.SpatialReferenceChanged -= OnSpatialReferenceChanged;
                 Control.DrawStatusChanged -= OnDrawStatusChanged;
                 Control.LayerViewStateChanged -= OnLayerViewStateChanged;
+                Control.Drag -= OnMapDrag;
+                Control.Touch -= OnMapTouch;
             }
 
             CusMapView currentElement = e.NewElement;
@@ -47,6 +47,7 @@ namespace EsriMap.Android.Renderer
                     SetNativeControl(_originMapView);
                 }
 
+                EsriEnumConverter.Init(_originMapView);
                 Control.GeoViewTapped += OnGeoViewTapped;
                 Control.GeoViewDoubleTapped += OnGeoViewDoubleTapped;
                 Control.GeoViewHolding += OnGeoViewHolding;
@@ -54,7 +55,19 @@ namespace EsriMap.Android.Renderer
                 Control.SpatialReferenceChanged += OnSpatialReferenceChanged;
                 Control.DrawStatusChanged += OnDrawStatusChanged;
                 Control.LayerViewStateChanged += OnLayerViewStateChanged;
+                Control.Drag += OnMapDrag;
+                Control.Touch += OnMapTouch;
             }
+        }
+
+        private void OnMapTouch(object sender, TouchEventArgs e)
+        {
+            Element.OnTouch(sender, EsriEnumConverter.ConvertFrom(e));
+        }
+
+        private void OnMapDrag(object sender, DragEventArgs e)
+        {
+            Element.OnDrag(sender, EsriEnumConverter.ConvertFrom(e));
         }
 
         private void OnLayerViewStateChanged(object sender, LayerViewStateChangedEventArgs e)

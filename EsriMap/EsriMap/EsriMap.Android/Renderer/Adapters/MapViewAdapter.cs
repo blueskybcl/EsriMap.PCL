@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Esri.ArcGISRuntime.Geometry;
 using Esri.ArcGISRuntime.Mapping;
 using EsriMap.Controls;
@@ -109,6 +110,11 @@ namespace EsriMap.Android.Renderer.Adapters
 
                 xfMapView.Map.InitialViewpoint = new Viewpoint(new Envelope(envelope.XMin, envelope.YMin,
                     envelope.XMax, envelope.YMax, spatialReference));
+                xfMapView.SetViewpoint(xfMapView.Map.InitialViewpoint);
+                Task.Run(async () =>
+                {
+                   await xfMapView.SetViewpointCenterAsync(34.3177313608, 108.9576703038);
+                });
             }
         }
 

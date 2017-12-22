@@ -13,8 +13,8 @@ namespace EsriMap
     {
         private const string DefaultWebMapUrl =
             "https://www.arcgis.com/home/item.html?id=2d6fa24b357d427f9c737774e7b0f977";
-        private readonly Viewpoint _defaultViewpoint = new Viewpoint(new Envelope(107.40, 33.42, 109.49,
-            34.45, SpatialReferenceType.WebMercator));
+        private readonly Viewpoint _defaultViewpoint = new Viewpoint(new Envelope(108.6576703038, 34.1177313608, 109.2576703038,
+            34.5177313608, SpatialReferenceType.Wgs84));
 
         public MainPage()
         {
@@ -36,23 +36,23 @@ namespace EsriMap
                     break;
 
                 case 1:
-                    MyMapView.Map = new Map {MapType = MapType.ImageryWithLabels};
+                    MyMapView.Map = new Map {MapType = MapType.ImageryWithLabels, InitialViewpoint = _defaultViewpoint };
                     break;
 
                 case 2:
-                    MyMapView.Map = new Map {MapType = MapType.Oceans};
+                    MyMapView.Map = new Map {MapType = MapType.Oceans, InitialViewpoint = _defaultViewpoint };
                     break;
 
                 case 3:
-                    MyMapView.Map = new Map {MapType = MapType.Streets};
+                    MyMapView.Map = new Map {MapType = MapType.Streets, InitialViewpoint = _defaultViewpoint };
                     break;
 
                 case 4:
-                    MyMapView.Map = new Map {MapType = MapType.StreetsVector};
+                    MyMapView.Map = new Map {MapType = MapType.StreetsVector, InitialViewpoint = _defaultViewpoint };
                     break;
 
                 case 5:
-                    MyMapView.Map = new Map {MapType = MapType.TerrainWithLabels};
+                    MyMapView.Map = new Map {MapType = MapType.TerrainWithLabels, InitialViewpoint = _defaultViewpoint };
                     break;
             }
         }

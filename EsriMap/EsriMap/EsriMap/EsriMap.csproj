@@ -39,8 +39,11 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\BackgroundGrid.cs" />
+    <Compile Include="Controls\DragAction.cs" />
+    <Compile Include="Controls\EventArgs\DragEventArgs.cs" />
     <Compile Include="Controls\EventArgs\DrawStatusChangedEventArgs.cs" />
     <Compile Include="Controls\EventArgs\LayerViewStateChangedEventArgs.cs" />
+    <Compile Include="Controls\EventArgs\TouchEventArgs.cs" />
     <Compile Include="Controls\EventArgs\ViewpointEventArgs.cs" />
     <Compile Include="Controls\Geometrys\Envelope.cs" />
     <Compile Include="Controls\Geometrys\Geometry.cs" />
