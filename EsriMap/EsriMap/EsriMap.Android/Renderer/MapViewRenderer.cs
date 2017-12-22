@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
-using Esri.ArcGISRuntime.UI.Controls;
+using Esri.ArcGISRuntime.Geometry;
 using EsriMap.Android.Renderer;
 using EsriMap.Android.Renderer.Adapters;
 using Xamarin.Forms;
@@ -10,6 +10,10 @@ using CusGeoViewInputEventArgs = EsriMap.Controls.GeoViewInputEventArgs;
 using CusMapPoint = EsriMap.Controls.MapPoint;
 using Esri.ArcGISRuntime.UI;
 using Esri.ArcGISRuntime.Mapping;
+using EsriMap.Controls;
+using GeoViewInputEventArgs = Esri.ArcGISRuntime.UI.Controls.GeoViewInputEventArgs;
+using MapView = Esri.ArcGISRuntime.UI.Controls.MapView;
+using Viewpoint = Esri.ArcGISRuntime.Mapping.Viewpoint;
 
 [assembly: ExportRenderer(typeof(CusMapView), typeof(MapViewRenderer))]
 
@@ -55,12 +59,12 @@ namespace EsriMap.Android.Renderer
 
         private void OnLayerViewStateChanged(object sender, LayerViewStateChangedEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void OnDrawStatusChanged(object sender, DrawStatusChangedEventArgs e)
         {
-            throw new NotImplementedException();
+
         }
 
         private void OnSpatialReferenceChanged(object sender, EventArgs e)
@@ -135,6 +139,7 @@ namespace EsriMap.Android.Renderer
             if (Element is CusMapView cusMapView)
             {
                 _originMapView.Map.Basemap = _adapter.GetBaseMap(cusMapView);
+                _adapter.SetInitialViewpoint(_originMapView, cusMapView);
             }
         }
     }

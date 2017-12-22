@@ -1,9 +1,11 @@
 ﻿using System;
+using Esri.ArcGISRuntime.Geometry;
 using Esri.ArcGISRuntime.Mapping;
 using EsriMap.Controls;
 using CusMapView = EsriMap.Controls.MapView;
 using EsriMapView = Esri.ArcGISRuntime.UI.Controls.MapView;
 using Map = Esri.ArcGISRuntime.Mapping.Map;
+using Viewpoint = Esri.ArcGISRuntime.Mapping.Viewpoint;
 
 namespace EsriMap.Android.Renderer.Adapters
 {
@@ -21,12 +23,6 @@ namespace EsriMap.Android.Renderer.Adapters
             MappingMap(XFMapView, cusMapView);
             //TODO: Attach custom property
             return XFMapView;
-        }
-
-        private void MappingMap(EsriMapView xfMapView, CusMapView cusMapView)
-        {
-            Basemap baseMap = GetBaseMap(cusMapView);
-            xfMapView.Map = new Map(baseMap);
         }
 
         public Basemap GetBaseMap(CusMapView cusMapView)
@@ -98,6 +94,29 @@ namespace EsriMap.Android.Renderer.Adapters
                 default:
                     throw new ArgumentOutOfRangeException(nameof(cusMapView.Map.MapType), cusMapView.Map.MapType, null);
             }
+        }
+
+        public void SetInitialViewpoint(EsriMapView xfMapView, CusMapView cusMapView)
+        {
+            if (cusMapView.Map.InitialViewpoint?.Envelope != null)
+            {
+                var envelope = cusMapView.Map.InitialViewpoint.Envelope;
+                SpatialReference spatialReference = SpatialReferences.WebMercator;
+                if (SpatialReferenceType.Wgs84 == envelope.SpatialReferenceType)
+                {
+                    spatialReference = SpatialReferences.Wgs84;
+                }
+
+                xfMapView.Map.InitialViewpoint = new Viewpoint(new Envelope(envelope.XMin, envelope.YMin,
+                    envelope.XMax, envelope.YMax, spatialReference));
+            }
+        }
+
+        private void MappingMap(EsriMapView xfMapView, CusMapView cusMapView)
+        {
+            Basemap baseMap = GetBaseMap(cusMapView);
+            xfMapView.Map = new Map(baseMap);
+            SetInitialViewpoint(xfMapView, cusMapView);
         }
     }
 }

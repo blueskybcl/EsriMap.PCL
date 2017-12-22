@@ -8,5 +8,7 @@ namespace EsriMap.Controls
 {
     public enum SpatialReferenceType
     {
+        WebMercator,
+        Wgs84
     }
 }

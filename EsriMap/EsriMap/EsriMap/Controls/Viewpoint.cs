@@ -9,12 +9,12 @@ namespace EsriMap.Controls
 {
     public class Viewpoint
     {
-        public Viewpoint(Geometry targetGeometry)
+        public Viewpoint(Envelope envelope)
         {
-            TargetGeometry = targetGeometry;
+            Envelope = envelope;
         }
 
-        public Geometry TargetGeometry { get; }
+        public Envelope Envelope { get; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public double Scale { get; set; }
