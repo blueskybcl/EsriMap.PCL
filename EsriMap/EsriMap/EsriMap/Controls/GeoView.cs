@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using EsriMap.Common;
 using EsriMap.Controls.EventArgs;
 using Xamarin.Forms;
 
@@ -83,6 +79,11 @@ namespace EsriMap.Controls
         public void OnLayerViewStateChanged(LayerViewStateChangedEventArgs e)
         {
             LayerViewStateChanged?.Invoke(this, e);
+        }
+
+        public void ShowCalloutAt(CalloutDefinition definition)
+        {
+            MessagingCenter.Send(this,Constants.MessageCenterKeys.ShowCalloutAtKey, definition);
         }
     }
 }

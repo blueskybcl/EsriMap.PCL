@@ -5,10 +5,12 @@ using EsriMap.Android.Renderer.Adapters;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using CusMapView = EsriMap.Controls.MapView;
-using CusGeoViewInputEventArgs = EsriMap.Controls.GeoViewInputEventArgs;
+using CusGeoViewInputEventArgs = EsriMap.Controls.EventArgs.GeoViewInputEventArgs;
 using CusMapPoint = EsriMap.Controls.MapPoint;
 using Esri.ArcGISRuntime.UI;
 using Esri.ArcGISRuntime.Mapping;
+using EsriMap.Common;
+using EsriMap.Controls;
 using EsriMap.Droid.Renderer.Converters;
 using GeoViewInputEventArgs = Esri.ArcGISRuntime.UI.Controls.GeoViewInputEventArgs;
 using MapView = Esri.ArcGISRuntime.UI.Controls.MapView;
@@ -36,6 +38,7 @@ namespace EsriMap.Android.Renderer
                 Control.LayerViewStateChanged -= OnLayerViewStateChanged;
                 Control.Drag -= OnMapDrag;
                 Control.Touch -= OnMapTouch;
+                MessagingCenter.Unsubscribe<GeoView>(this, Constants.MessageCenterKeys.ShowCalloutAtKey);
             }
 
             CusMapView currentElement = e.NewElement;
@@ -57,7 +60,15 @@ namespace EsriMap.Android.Renderer
                 Control.LayerViewStateChanged += OnLayerViewStateChanged;
                 Control.Drag += OnMapDrag;
                 Control.Touch += OnMapTouch;
+                MessagingCenter.Subscribe<GeoView, Controls.CalloutDefinition>(this,
+                    Constants.MessageCenterKeys.ShowCalloutAtKey, ShowCallout);
             }
+        }
+
+        private void ShowCallout(GeoView sender, Controls.CalloutDefinition definition)
+        {
+            _originMapView.ShowCalloutAt(ArgumentsConverter.ConvertFrom(definition.Location),
+                ArgumentsConverter.ConvertFrom(definition));
         }
 
         private void OnMapTouch(object sender, TouchEventArgs e)

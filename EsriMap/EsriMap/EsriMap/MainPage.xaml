@@ -22,7 +22,7 @@
                     <Label Text="TerrainWithLabels" />
                 </tab:SegmentedTabControl.Children>
             </tab:SegmentedTabControl>
-            <controls:MapView x:Name="MyMapView" Grid.Row="1" />
+            <controls:MapView x:Name="MyMapView" Grid.Row="1" GeoViewTapped="MyMapView_OnGeoViewTapped" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EsriMap.Controls;
+﻿using EsriMap.Controls;
+using EsriMap.Controls.EventArgs;
 using EsriMap.Controls.Geometrys;
 using Xamarin.Forms;
 
@@ -55,6 +51,16 @@ namespace EsriMap
                     MyMapView.Map = new Map {MapType = MapType.TerrainWithLabels, InitialViewpoint = _defaultViewpoint };
                     break;
             }
+        }
+
+        private void MyMapView_OnGeoViewTapped(object sender, GeoViewInputEventArgs e)
+        {
+            MyMapView.ShowCalloutAt(new CalloutDefinition
+            {
+                Location = e.Location,
+                Title = "Test",
+                Message = "只不过测试一下"
+            });
         }
     }
 }

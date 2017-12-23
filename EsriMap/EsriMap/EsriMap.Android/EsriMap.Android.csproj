@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Renderer\Adapters\MapViewAdapter.cs" />
+    <Compile Include="Renderer\Converters\ArgumentsConverter.cs" />
     <Compile Include="Renderer\Converters\EsriEnumConverter.cs" />
     <Compile Include="Renderer\MapViewRenderer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />

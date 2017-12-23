@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace EsriMap.Controls
+namespace EsriMap.Controls.EventArgs
 {
     public class GeoViewInputEventArgs : System.EventArgs
     {
