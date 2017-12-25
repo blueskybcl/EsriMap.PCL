@@ -41,6 +41,7 @@
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Controls\BackgroundGrid.cs" />
     <Compile Include="Controls\CalloutDefinition.cs" />
+    <Compile Include="Controls\DelegateCommand.cs" />
     <Compile Include="Controls\DragAction.cs" />
     <Compile Include="Controls\EventArgs\DragEventArgs.cs" />
     <Compile Include="Controls\EventArgs\DrawStatusChangedEventArgs.cs" />
@@ -49,8 +50,10 @@
     <Compile Include="Controls\EventArgs\ViewpointEventArgs.cs" />
     <Compile Include="Controls\Geometrys\Envelope.cs" />
     <Compile Include="Controls\Geometrys\Geometry.cs" />
+    <Compile Include="Controls\GeometryType.cs" />
     <Compile Include="Controls\GeoView.cs" />
     <Compile Include="Controls\EventArgs\GeoViewInputEventArgs.cs" />
+    <Compile Include="Controls\Graphic.cs" />
     <Compile Include="Controls\GraphicsOverlay.cs" />
     <Compile Include="Controls\GraphicsRenderingMode.cs" />
     <Compile Include="Controls\GridLabelPosition.cs" />
@@ -65,9 +68,15 @@
     <Compile Include="Controls\MapView.cs" />
     <Compile Include="Controls\MapViewInteractionOptions.cs" />
     <Compile Include="Controls\SceneView.cs" />
+    <Compile Include="Controls\SketchCreationMode.cs" />
+    <Compile Include="Controls\SketchEditConfiguration.cs" />
     <Compile Include="Controls\SketchEditor.cs" />
+    <Compile Include="Controls\SketchResizeMode.cs" />
     <Compile Include="Controls\SketchStyle.cs" />
     <Compile Include="Controls\SpatialReferenceType.cs" />
+    <Compile Include="Controls\Symbologys\FillSymbol.cs" />
+    <Compile Include="Controls\Symbologys\SimpleFillSymbol.cs" />
+    <Compile Include="Controls\Symbologys\Symbol.cs" />
     <Compile Include="Controls\ViewLabelProperties.cs" />
     <Compile Include="Controls\Viewpoint.cs" />
     <Compile Include="Controls\WheelZoomDirection.cs" />
@@ -76,6 +85,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SketchMap.xaml.cs">
+      <DependentUpon>SketchMap.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MainPage.xaml">
@@ -103,6 +115,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SketchMap.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.280\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:EsriMap.Controls;assembly=EsriMap"
+             xmlns:tab="clr-namespace:SegmentedTabControl.FormsPlugin;assembly=SegmentedTabControl"
+             x:Class="EsriMap.SketchMap">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <tab:SegmentedTabControl x:Name="SketchModeTab" Grid.Row="0" UnselectedSegmentBackgroundColor="White" TintColor="Black" 
+                                     SelectedSegmentTextColor="White" SelectedSegment="-1" UnselectedSegmentTextColor="Black"
+                                     HeightRequest="30" ItemTapped="SketchModeTab_OnItemTapped" >
+                <tab:SegmentedTabControl.Children>
+                    <Label Text="Circle" />
+                    <Label Text="Rectangle" />
+                    <Label Text="FreeHandLine" />
+                    <Label Text="FreeHandPolygon" />
+                </tab:SegmentedTabControl.Children>
+            </tab:SegmentedTabControl>
+            <controls:MapView x:Name="MyMapView" Grid.Row="1" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -20,6 +20,12 @@ namespace EsriMap.Controls
         private bool _labelsEnabled = true;
         private double _minScale = 1;
         private double _maxScale = 20;
+        private readonly List<Graphic> _graphicsCollection;
+
+        public GraphicsOverlay()
+        {
+            _graphicsCollection = new List<Graphic>();
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         
@@ -100,5 +106,7 @@ namespace EsriMap.Controls
                 OnPropertyChanged();
             }
         }
+
+        public List<Graphic> Graphics => _graphicsCollection;
     }
 }
